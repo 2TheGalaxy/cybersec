@@ -29,6 +29,6 @@ Splunk's key components include:
 "search" command is implicit at the beginning
 - operators AND, OR, NOT, =, !=, <, >, <=, >=
 - fields
-####
+###
     index="main" sourcetype="WinEventLog:Sysmon" EventCode=1
     | fields - User
