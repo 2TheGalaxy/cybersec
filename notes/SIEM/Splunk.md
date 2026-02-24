@@ -76,3 +76,47 @@ The result is not joined with any search results but can be used to verify the
 content of the lookup file or for subsequent operations like filtering or
 joining with other datasets.
 
+#### timerange
+    index="main" earliest=-7d EventCode!=1
+
+#### **transactions**
+    index="main" sourcetype="WinEventLog:Sysmon" (EventCode=1 OR EventCode=3)
+    | transaction Image startswith=eval(EventCode=1) endswith=eval(EventCode=3) maxspan=1m
+    | table Image
+    | dedup Image  
+
+- index="main" sourcetype="WinEventLog:Sysmon" (EventCode=1 OR EventCode=3):
+  This is the search criteria. It's pulling from the main index where the
+  sourcetype is WinEventLog:Sysmon and the EventCode is either 1 or 3.
+  In Sysmon logs, EventCode 1 refers to a process creation event, and
+  EventCode 3 refers to a network connection event.
+- | transaction Image startswith=eval(EventCode=1) endswith=eval(EventCode=3) maxspan=1m:
+  The transaction command is used here to group events based on the Image
+  field, which represents the executable or script involved in the event.
+  This grouping is subject to the conditions: the transaction starts with an
+  event where EventCode is 1 and ends with an event where EventCode is 3.
+  The maxspan=1m clause limits the transaction to events occurring within a
+  1-minute window. The transaction command can link together related events
+  to provide a better understanding of the sequences of activities happening
+  within a system.
+
+this query aims to identify sequences of activities
+(process creation followed by a network connection)
+
+#### subsearch
+    ... [search ...]
+
+### Identify available data
+
+#### event count / summarize (note no "..." at the beginning)
+    | eventcount summarize=false index=*
+    | table index, count
+
+#### metadata
+    | metadata type=sourcetypes
+####
+    | metadata type=sources
+
+#### raw data from a specific log or log type
+    sourcetype="WinEventLog:Security"
+    | table _raw
