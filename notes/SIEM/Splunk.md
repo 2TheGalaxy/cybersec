@@ -21,4 +21,14 @@ Splunk's key components include:
 - Apps and Add-ons
 - Knowledge objects
 
+
 ## Splunk as a SIEM Solution
+
+### SPL Searching
+
+"search" command is implicit at the beginning
+- operators AND, OR, NOT, =, !=, <, >, <=, >=
+- fields
+    index="main" sourcetype="WinEventLog:Sysmon" EventCode=1
+    | fields - User
+
