@@ -1,12 +1,9 @@
 # Incident handling process
 
 ## Cyber Kill Chain
-##
     Recon -> Weaponize -> Deliver -> Exploit -> Install -> C&C -> Action
-##
 
 ### Stages of the Cyber Kill Chain
-
 #### Recon
 Attacker choosing target and gathering information about it
 
@@ -314,5 +311,12 @@ eg. Elastic Security "Attack Discovery"
     | Report to Management & Close Case    |
     |______________________________________|
 
-
-
+### Reporting
+**Crucial part!** A complete report will answer:
+- What happened and when
+- How did the team perform in dealing with the incident
+- Did the business provide necessary information and respong promptly to aid in
+  handling the incident
+- What actions have beed implemented to contain and eradicate the incident
+- What preventive measures for the future
+- What tools and resources for the future
