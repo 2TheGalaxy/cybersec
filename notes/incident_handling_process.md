@@ -114,12 +114,10 @@ Incident handling has two main activities:
 (Domain-based Message Authentication, Reporting & Conformance) is an email 
 protection mechanism
 
----glossary---
 - **SPF** (Sender Policy Framework) is an email authentication protocol
   designed to prevent email spoofing
 - **DKIM** (DomainKeys Identified Mail) is an email authentication protocol
   that uses public-key cryptography to verify
-------
 
 ### Endpoint Hardening (& EDR)
 Highly important actions:
@@ -168,5 +166,153 @@ least the "High" and "Critical" vulnerabilities that are discovered.
 
 ### Purple Team Exercises
 Blue and Read team working together to assess the security.
+
+
+# Detection & Analysis Stage
+- **Detection**
+
+- **Initial Investigation**
+  - establish context
+  - date, time
+  - who, where
+  - etc.
+
+- **Incident Severity & Extent Questions**
+  - What is the exploit impact
+  - What is required for the exploit
+  - What is or can be affected
+  - Are there remediation steps
+  - How many systems impacted
+  - Is the exploit used in the wild
+  - Does the exploit have any worm-like capabilities
+  Last three possibly indicate sophistication level of the attacker
+
+- **Incident Confidentiality & Communication**
+  - who and what to report to
+
+### The Investigation
+
+    Initial investigation data
+        |
+     __ | _________________________________
+    |   v                                  |
+    | IOCs (indicators of compromise) <-.  |
+    |   |                               :  |
+    |   v                               :  |
+    | Compromised Systems               :  |
+    |   |                               :  |
+    |   v                               :  |
+    | Collection & Analysis ------------'  |
+    |______________________________________|
+
+Do not narrow investigation down but broaden it.
+
+### Creation & usage of IOCs
+**IOC (Indicator of Compromise)** - sign that indicent has occured, structured,
+artifact of compromise, like:
+- IP addresses,
+- hash values of files,
+- filenames,
+- etc.
+
+Widely used standards / special language for IOCs:
+- **OpenIOC**
+- **YARA**
+- **STIX (Structured Threat Information eXpression)**
+
+To leverage IOCs, we will have to deploy an IOC-obtaining/IOC-searching tool
+(native or third-party and possibly at scale).
+A common approach is to utilize **WMI (Windows Management Instrumentation)** or
+PowerShell for IOC-related operations in Windows environments.
+
+----------
+**CAUTION**
+During investigation prevent highly priviliged user credentials from being
+cached eg. WinRM.
+
+**KNOW YOUR TOOLS**
+eg. "PsExec":
+- when used with explicit credentials, they are cached,
+- when used through the session of current user - not cached on remote machine.
+----------
+
+
+### Identification of new leads & impacted systems
+- eliminate false positives
+- focus on IOCs that give most new leads
+
+### Data collection and analysis from the new leads and impacted systems
+- Collect and preserve the sate of impacted systems
+- Sometimes we want to perform '**live response**' and sometimes we need to
+  shut down affected systems,
+- Keep track of the **chain of custody**.
+
+### Use of AI in threat detection
+eg. Elastic Security "Attack Discovery"
+
+
+# Containment, Eradication and Recovery Stage
+    Investigation is complete
+            |
+       ____ v ________________________
+      |                               |
+      | Containment Strategy          |
+      | Evidence Gathering            |
+      | Identify the Attacking Host   |
+      | Eradication and Recovery      |
+      |_______________________________|
+                        |
+                        v
+              Bring Systems Back to Normal
+
+### Containment
+- prevent spread
+- **short-term containment**:
+  - leave unaltered
+  - take forensic images / "backup stage"
+  - eg. - puting on separate VLAN
+- **long-term containment**:
+  - persistent actions and changes
+  - eg. changing passwords, applying firewall rules
+
+### Eradication
+- remove malware
+- rebuild some systems or restore backups
+- applay patches
+- hardening systems
+
+### Recovery
+- bring systems back to normal operation
+- verify integrity
+
+
+# Post-Incident Activity Stage
+
+     ______________________________________
+    |                                      |
+    | Incident Resolved                    |
+    |          |                           |
+    |          v                           |
+    | Post-Incident Review                 |
+    |          |                           |
+    |          v                           |
+    | Lessons Learned Metting              |
+    |          |                           |
+    |          v                           |
+    | Root Cause Analysis                  |
+    |          |                           |
+    |          v                           |
+    | Update Policies and Playbooks        |
+    |          |                           |
+    |          v                           |
+    | Enhance Detection & Monitoring Rules |
+    |          |                           |
+    |          v                           |
+    | Knowledge Sharing & Awarnes          |
+    |          |                           |
+    |          v                           |
+    | Report to Management & Close Case    |
+    |______________________________________|
+
 
 
