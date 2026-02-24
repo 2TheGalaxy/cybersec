@@ -1,4 +1,4 @@
-### Splunk & SPL
+## Splunk & SPL
 
 **Splunk** - data analysis software solution for indexing, analyzing,
 visualizing massive amounts of machine data.
@@ -21,4 +21,4 @@ Splunk's key components include:
 - Apps and Add-ons
 - Knowledge objects
 
-#### Splunk as a SIEM Solution
+### Splunk as a SIEM Solution
