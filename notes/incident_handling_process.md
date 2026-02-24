@@ -62,12 +62,12 @@ https://attack.mitre.org/
 Ilustrates how much effort it takes for adversary to change their tactics when
 defenders detect and block different types of indicators.
 
-**TTPs (ATT&CK)**               - Tough
-**Tools**                       - Challenging
-**Network / Host Artifacts**    - Annoying
-**Domain Names**                - Simple
-**IP Addresses**                - Easy
-**Hash Values**                 - Trivial
+    **TTPs (ATT&CK)**               - Tough
+    **Tools**                       - Challenging
+    **Network / Host Artifacts**    - Annoying
+    **Domain Names**                - Simple
+    **IP Addresses**                - Easy
+    **Hash Values**                 - Trivial
 
 ### MITRE ATT&CK integration in **TheHive**
 
@@ -76,17 +76,16 @@ to efficiently handle incidents by processing alerts.
 
 # Incident Handling Process Overview
 
-**Preparation**
-^        |
-|        v
-|   .-->**Detection and Analysis**--.
-|   :    |                      :
-|   :    v                      v
-|   '---**Containment, Eradication and Recovery**
-|        |
-|        v
-**Post-Incident Activity**
-
+    **Preparation**
+    ^        |
+    |        v
+    |   .-->**Detection and Analysis**--.
+    |   :    |                      :
+    |   :    v                      v
+    |   '---**Containment, Eradication and Recovery**
+    |        |
+    |        v
+    **Post-Incident Activity**
 
 
 
