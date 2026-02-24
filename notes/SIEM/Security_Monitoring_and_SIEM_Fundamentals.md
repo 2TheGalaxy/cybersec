@@ -23,8 +23,8 @@ documentation.
               '-- Documentation <--'
 
 
-**IRP** - incident response plan
-**LoLBins** - Living-off-the-Land Binaries
-**TTD** - Time to Detect
-**TTR** - Time to Resolution
-**SOP** - Standard Operating Procedures
+- **IRP** - incident response plan
+- **LoLBins** - Living-off-the-Land Binaries
+- **TTD** - Time to Detect
+- **TTR** - Time to Resolution
+- **SOP** - Standard Operating Procedures
